@@ -21,9 +21,9 @@
                     <td>{{ $user->email }}</td>
                     <td> <a href="{{ route('category.edit', $user->id) }}" class="btn btn-primary">View Store</a>
                     </td>
-                    <td>{{ $user->roles[0]->name }}</td>
+                    <td>{{ $user->role}}</td>
                     <td>
-                        @if ($user->roles[0]->name == 'CLIENT')
+                        @if ($user->role == 'CLIENT')
                             <a href="{{ route('admin.changeRole', $user->id) }}" class="btn btn-primary">Make Admin</a>
                         @endif
                     </td>

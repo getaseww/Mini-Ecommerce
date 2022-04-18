@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -14,15 +13,16 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    protected function authenticated(Request $request, $user)
-    {
-        $roles=$user->roles()->get();
-        if (1) { // do your magic here
-            // Log::info($roles);
-            return redirect()->route('admin.dashboard');
+    public function redirectTo() {
+        $role = Auth::user()->role; 
+        if($role==='ADMIN'){
+            return RouteServiceProvider::ADMIN;
         }
-    }
-    protected $redirectTo = RouteServiceProvider::ADMIN;
+        if($role==='CLIENT'){
+            return RouteServiceProvider::CLIENT;
+        }
+      }
+    // protected $redirectTo = RouteServiceProvider::ADMIN;
 
     /**
      * Create a new controller instance.

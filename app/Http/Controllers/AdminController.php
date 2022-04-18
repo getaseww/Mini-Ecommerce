@@ -11,12 +11,11 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('role:ADMIN');
     }
 
     public function index()
     {
-        $users = User::with('roles')->paginate(8);
+        $users = User::paginate(8);
         return view('admin.users', compact('users'));
     }
 
@@ -33,7 +32,8 @@ class AdminController extends Controller
     public function makeAdmin($id)
     {
         $user = User::find($id);
-        $user->roles()->attach(['role_id' => 1]);
+        $user->role='ADMIN';
+        $user->update();
         return redirect('/admin/dashboard')->with('status', 'User role changed successfully!');
     }
 
@@ -52,13 +52,9 @@ class AdminController extends Controller
         $user= User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'role' => 'ADMIN',
             'password' => Hash::make($data['password']),
         ]);
-        $u=User::find($user->id);
-        $u->roles()->attach([
-            'role_id'=>1,]);
-
-       
         return redirect('/admin/dashboard')->with('status', 'Admin added successfully');
     }
 

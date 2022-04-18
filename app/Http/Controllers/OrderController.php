@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\OrderedProduct;
+
 class OrderController extends Controller
 {
-    
+
     // public function create(){
     //     return view('order');
     // }
@@ -20,8 +22,16 @@ class OrderController extends Controller
             'phone' => 'required',
         ]);
         $attributes = $request->all();
-        
-        Order::create($attributes);
+
+        $order = Order::create($attributes);
+        $cart = session()->get('cart');
+        foreach($cart as $c){
+            $atr['order_id']=$order->id;
+            $atr['product_id']=2;
+            $atr['quantity']=$c['quantity'];
+            OrderedProduct::create($atr);
+        }
+        $request->session()->forget('cart');
         return redirect('/');
     }
 }

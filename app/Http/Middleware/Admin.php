@@ -4,8 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class CheckRole
+class Admin
 {
     /**
      * Handle an incoming request.
@@ -14,10 +15,16 @@ class CheckRole
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next,$role)
+    public function handle(Request $request, Closure $next)
     {
-        if (! $request->user()->hasRole($role)) {
-            abort(401, 'This action is unauthorized.');
+        if (Auth::check())
+        {
+             if(Auth::user()->role==='ADMIN')
+             {
+                 return $next($request);
+             }
         }
-        return $next($request);    }
+     
+         return redirect('login');
+    }
 }

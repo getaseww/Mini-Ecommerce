@@ -20,6 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'role',
         'password',
     ];
 
@@ -42,11 +43,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function roles()
-    {
-        return $this
-            ->belongsToMany('App\Models\Role');
-    }
+    // public function roles()
+    // {
+    //     return $this
+    //         ->belongsToMany('App\Models\Role');
+    // }
 
     public function products()
     {
@@ -60,36 +61,36 @@ class User extends Authenticatable
             ->hasMany('App\Models\Category');
     }
 
-    public function authorizeRoles($roles)
-    {
-        if ($this->hasAnyRole($roles)) {
-            return true;
-        }
-        abort(401, 'This action is unauthorized.');
-    }
-    public function hasAnyRole($roles)
-    {
-        if (is_array($roles)) {
-            foreach ($roles as $role) {
-                if ($this->hasRole($role)) {
-                    return true;
-                }
-            }
-        } else {
-            if ($this->hasRole($roles)) {
-                return true;
-            }
-        }
-        return false;
-    }
+    // public function authorizeRoles($roles)
+    // {
+    //     if ($this->hasAnyRole($roles)) {
+    //         return true;
+    //     }
+    //     abort(401, 'This action is unauthorized.');
+    // }
+    // public function hasAnyRole($roles)
+    // {
+    //     if (is_array($roles)) {
+    //         foreach ($roles as $role) {
+    //             if ($this->hasRole($role)) {
+    //                 return true;
+    //             }
+    //         }
+    //     } else {
+    //         if ($this->hasRole($roles)) {
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
 
-    public function hasRole($role)
-    {
-        if ($this->roles()->where('name', $role)->first()) {
-            return true;
-        }elseif($this->roles()->where('name', $role)->skip(1)->first()){
-            return true;
-        }
-        return false;
-    }
+    // public function hasRole($role)
+    // {
+    //     if ($this->roles()->where('name', $role)->first()) {
+    //         return true;
+    //     }elseif($this->roles()->where('name', $role)->skip(1)->first()){
+    //         return true;
+    //     }
+    //     return false;
+    // }
 }
