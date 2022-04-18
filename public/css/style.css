@@ -1,0 +1,314 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: rgb(160, 65, 160);
+    color: #fff;
+    transition: all 0.3s;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: rgb(160, 65, 160);
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+
+#sidebar ul li a:hover {
+    color: rgb(160, 65, 160);
+    background: #fff;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #fff;
+    background: rgb(160, 65, 160);
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: rgb(160, 65, 160);
+}
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+
+    #sidebar.active {
+        background-color: rgb(160, 65, 160);
+        margin-left: 0;
+    }
+
+    #sidebarCollapse span {
+        display: none;
+    }
+}
+
+/* client directory */
+.title{
+    padding-bottom: 30px;
+    padding-left:25px;
+}
+.formContent{
+    justify-content: center;
+}
+
+/* dashboard */
+.clientDashCard{
+    width: 300px;
+    height: 200px;
+}
+.clientDashTitle{
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+.clientDashButtonContainer{
+    padding-top:20px;
+    text-align: center;
+}
+.clientDashButton{
+    text-align: center;
+    width:50px;
+    height:50px;
+    font-size: 20px;    
+}
+
+
+/* store */
+.latestProductTitle{
+    text-align: center;
+    font-weight: 900;
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+.storeProducts{
+    padding-top:40px;
+}
+.card-img-top{
+    height:250px;
+}
+.storeProductButtonContainer{
+    text-align: center;
+}
+.storeProductCard{
+    margin-left:30px;
+    margin-bottom: 30px;
+    width:350px;
+    height:500px
+}
+
+/* footer */
+.footer{
+    background-color: rgb(32,129,229);
+}
+.whiteColor{
+    color: white;
+}
+.par{
+    font-size: 18px;
+    color: white;
+}
+.customePad{
+    padding:20px 30px;
+}
+.list{
+    list-style-type: none;
+    font-size: 18px;
+}
+.footerLink{
+    text-decoration: none;
+    font-size: 18px;
+}
+.footerLink:hover{
+    color: #ddd;
+    cursor: pointer;
+}
+.copyright{
+    padding-top:20px;
+}
+.copyrightText{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+
+/* single product */
+.imgContainer{
+    padding-right: 30px;
+    padding-bottom: 50px;
+}
+.singleProductImg{
+    width:100%;
+    height: 400px;
+    object-fit: fill;
+}
+.singleProPrice{
+    padding-top: 30px;
+    color: rgb(218, 31, 31);
+}
+.singleProTitle{
+    padding-top: 20px;
+}
+.singleProDesc{
+    padding-bottom: 20px;
+}
+
+/* main home page */
+.belowNavContent{
+    margin: 0 50px;
+}
+.belowNavTitle{
+    color: black;
+    font-weight: 700;
+}
+.belowNavTitle2{
+    padding-top: 10px;
+    color: black;
+    font-weight: 500;
+}
+.belowNavDesc{
+    color: black;
+    font-size: 19px;
+}
+.imageWrapper{
+    margin-left: 30px;
+background-color:rgb(32,129,229);
+height:400px;
+width:600px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius:25px;
+transform: rotate(-3deg);
+}
+.belowNavImg{
+height:350px;
+width:500px;
+border-radius:20px;
+}
+
+/* more about the system */
+.Wrapper{
+    margin-top: 50px;
+    padding: 50px 20vw;
+}
+.systemDescTitle{
+    text-align: center;
+    font-weight: 800;
+    padding: 30px 0;
+}
+.systemDesRow{
+    padding-bottom: 50px;
+}
+.systemDescImg{
+    width: 100%;
+    height: 300px;
+    object-fit: fill;
+}
+.description{
+    color: black;
+    font-size: 20px;
+}
+
+/* stores */
+.storeUserCard{
+    margin: 20px 20px;
+    width: 300px;
+    height: 400px;
+}
+.name{
+    text-align: center;
+    padding-bottom: 20px;
+}
+.storesRow{
+    justify-content: center;
+}

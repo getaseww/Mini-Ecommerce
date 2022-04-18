@@ -45,16 +45,21 @@ class User extends Authenticatable
     public function roles()
     {
         return $this
-            ->belongsToMany('App\Models\Role')
-            ->withTimestamps();
+            ->belongsToMany('App\Models\Role');
     }
 
-    public function users()
+    public function products()
     {
         return $this
-            ->belongsToMany('App\Models\User')
-            ->withTimestamps();
+            ->hasMany('App\Models\Product');
     }
+
+    public function categories()
+    {
+        return $this
+            ->hasMany('App\Models\Category');
+    }
+
     public function authorizeRoles($roles)
     {
         if ($this->hasAnyRole($roles)) {
@@ -81,6 +86,8 @@ class User extends Authenticatable
     public function hasRole($role)
     {
         if ($this->roles()->where('name', $role)->first()) {
+            return true;
+        }elseif($this->roles()->where('name', $role)->skip(1)->first()){
             return true;
         }
         return false;
