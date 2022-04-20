@@ -62,7 +62,7 @@
                 <td colspan="1" class="hidden-xs"></td>
                 <td><a class="btn btn-success" data-toggle="modal" data-target="#orderModal"><i
                             class="fa fa-angle-left"></i>Checkout</a></td>
-                <td class="hidden-xs text-center"><strong>Total {{ $total }} Birr</strong></td>
+                <td class="hidden-xs text-center"><strong>Total {{ $total }}  Birr</strong></td>
             </tr>
         </tfoot>
     </table>
