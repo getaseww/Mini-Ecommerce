@@ -61,8 +61,7 @@
                 </button> --}}
                 <td colspan="1" class="hidden-xs"></td>
                 <td><a class="btn btn-success" data-toggle="modal" data-target="#orderModal"><i
-                            class="fa fa-angle-left"></i>Order
-                        Now</a></td>
+                            class="fa fa-angle-left"></i>Checkout</a></td>
                 <td class="hidden-xs text-center"><strong>Total {{ $total }} Birr</strong></td>
             </tr>
         </tfoot>
