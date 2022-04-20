@@ -57,7 +57,8 @@ class ProductController extends Controller
         $request->image->move(public_path('images'), $image);
         // $file= $request->file('image')->store('public/images',$image);
         // dd($request);
-        Product::create($attributes);
+        $product=Product::create($attributes);
+        $product->categories()->attach($request->cat);
         return redirect('/client/products')->with('status', 'Product created successfully');
     }
 

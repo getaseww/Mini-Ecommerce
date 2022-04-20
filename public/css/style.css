@@ -312,3 +312,8 @@ border-radius:20px;
 .storesRow{
     justify-content: center;
 }
+
+/* order detailes */
+.orderTitle{
+    padding-right: 10px;
+}

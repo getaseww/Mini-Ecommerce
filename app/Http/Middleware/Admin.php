@@ -17,14 +17,9 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check())
-        {
-             if(Auth::user()->role==='ADMIN')
-             {
-                 return $next($request);
-             }
+        if (Auth::user()->role === 'ADMIN') {
+            return $next($request);
         }
-     
-         return redirect('login');
+        abort(403, "You're not authorized!");
     }
 }

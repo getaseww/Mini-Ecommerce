@@ -36,13 +36,20 @@ Route::group(['prefix'  =>   'client'], function() {
     Route::get('/product/edit/{id}', [App\Http\Controllers\ProductController::class, 'edit'])->name('product.edit');
     Route::put('/product/update/{id}', [App\Http\Controllers\ProductController::class, 'update'])->name('product.update');
     Route::get('/product/delete/{id}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('product.delete');
+
+    // order
+    Route::get('/orders', [App\Http\Controllers\ClientController::class, 'orders'])->name('orders');
+    Route::get('/order/{id}', [App\Http\Controllers\OrderController::class, 'show'])->name('order.show');
+    Route::get('/order/delete/{id}', [App\Http\Controllers\OrderController::class, 'delete'])->name('order.delete');
+    Route::get('/order/update/{id}', [App\Http\Controllers\OrderController::class, 'update'])->name('order.update');
+
 });
 Route::get('/', [App\Http\Controllers\StoreController::class, 'mainHomePage'])->name('mainHomePage');
 Route::get('/stores',[App\Http\Controllers\StoreController::class, 'index'])->name('stores');
 Route::get('/{id}',[App\Http\Controllers\StoreController::class, 'findStore'])->name('store');
-// Route::get('/store/{user_id}/{cat_slug}',[App\Http\Controllers\StoreController::class, 'listByCat'])->name('listByCat');
-Route::get('/store/{user_id}/{slug}',[App\Http\Controllers\StoreController::class, 'show'])->name('store.show');
-// Route::get('/store/{user_id}/{slug}',[App\Http\Controllers\StoreController::class, 'show'])->name('show');
+Route::get('/store/{user_id}/{category_slug}',[App\Http\Controllers\StoreController::class, 'listByCat'])->name('listByCat');
+Route::get('/store/{user_id}/show/{slug}',[App\Http\Controllers\StoreController::class, 'show'])->name('store.show');
+Route::get('/store/{user_id}/{category_slug}/{slug}',[App\Http\Controllers\StoreController::class, 'showFromCat'])->name('showFromCat');
 // Route::get('/store/{user_id}/{slug}',[App\Http\Controllers\StoreController::class, 'show'])->name('show');
 
 

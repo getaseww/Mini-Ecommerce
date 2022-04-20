@@ -44,7 +44,7 @@
                     <ul class="navbar-nav me-auto">
                         @foreach ($categories as $cat)
                             <li>
-                                <a href="{{route('listByCat',[$user->id,$cat->slug])}}" class="nav-link">
+                                <a href="{{ route('listByCat', [$user->id, $cat->slug]) }}" class="nav-link">
                                     {{ $cat->name }}
                                 </a>
                             </li>
@@ -98,23 +98,27 @@
             </div>
         </nav>
         <div class="storeProducts container">
-            <h2 class="latestProductTitle"></h2>
-            <div class="row">
-                <div class="col-lg-2"></div>
-                <div class="imgContainer col-lg-4">
-                    <img class="singleProductImg" src="http://127.0.0.1:8000/images/{{ $product[0]->image }}" alt="">
-                </div>
-                <div class="col-lg-4">
-                    <h5>{{ $product[0]->name }}</h5>
-                    <sub>{{ $product[0]->created_at->diffForHumans() }}</sub>
-                    <h5 class="singleProPrice">{{ $product[0]->price }} Birr</h5>
-                    <h4 class="singleProTitle">DETAILS</h4>
-                    <p class="singleProDesc">{{ $product[0]->description }}</p>
-                    <a href="{{ route('addToCart', $product[0]->id) }}" type="submit" class="btn btn-success">Add To
-                        Cart</a>
-                </div>
-                <div class="col-lg-2"></div>
-            </div>
+            <h2 class="latestProductTitle">LATEST PRODUCTS</h2>
+            @foreach ($products as $pro)
+                @foreach ($pro->products->chunk(3) as $row)
+                    <div class="row">
+                        @foreach ($row as $product)
+                            <div class="storeProductCard card">
+                                <img class="storeProductImg card-img-top"
+                                    src="http://127.0.0.1:8000/images/{{ $product->image }}" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $product->name }}</h5>
+                                    <p class="card-text">{{ $product->price }} Birr</p>
+                                    <div class="storeProductButtonContainer">
+                                        <a href="{{ route('showFromCat', [$user->id, $category_slug, $product->slug]) }}"
+                                            class="btn btn-primary">Buy Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endforeach
+            @endforeach
         </div>
     </div>
     <footer class="footer">

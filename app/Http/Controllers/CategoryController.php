@@ -43,7 +43,7 @@ class CategoryController extends Controller
         ]);
         $attributes = $request->all();
         $attributes['user_id'] = auth()->id();
-        $attributes['slug'] = Str::slug($request->name);
+        $attributes['slug'] = Str::slug($request->name).'-'.strval(auth()->id());
 
         // dd($attributes);
         Category::create($attributes);

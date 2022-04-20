@@ -33,9 +33,6 @@
                 <a class="navbar-brand" href="/">
                     YourStore
                 </a>
-                <a class="navbar-brand" href="/{{ $user->id }}">
-                    {{ $user->name }}
-                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -47,7 +44,7 @@
                     <ul class="navbar-nav me-auto">
                         @foreach ($categories as $cat)
                             <li>
-                                <a href="/store/{{ $user->id }}/{{ $cat->slug }}" class="nav-link">
+                                <a href="{{route('listByCat',[$user->id,$cat->slug])}}" class="nav-link">
                                     {{ $cat->name }}
                                 </a>
                             </li>

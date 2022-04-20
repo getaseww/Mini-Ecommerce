@@ -11,6 +11,7 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('admin');
     }
 
     public function index()
@@ -25,7 +26,8 @@ class AdminController extends Controller
 
     public function destroy($id)
     {
-        User::find($id)->delete();
+        $user=User::find($id);
+        $user->delete();
         return redirect('/admin/dashboard')->with('status', 'User deleted successfully!');
     }
 

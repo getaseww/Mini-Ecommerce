@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-    protected $table = 'categories';
     protected $fillable = [
         'name', 'slug', 'description', 'user_id', 'display',
     ];
@@ -16,12 +15,12 @@ class Category extends Model
 
     public function products()
     {
-        return $this
-            ->belongsToMany('App\Models\Product')->withTimestamps();
+        return $this->belongsToMany('App\Models\Product','product_categories');
     }
 
-    public function user(){
+    public function user()
+    {
         return $this
-        ->belongsTo('App\Models\User');
+            ->belongsTo('App\Models\User');
     }
 }

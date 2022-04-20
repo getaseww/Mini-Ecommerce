@@ -26,7 +26,7 @@
                         <td data-th="Product">
                             <div class="row">
                                 <div class="col-sm-3 hidden-xs"><img
-                                        src="http://127.0.0.1:8000/images/{{ $details['photo'] }}" width="100"
+                                        src="http://127.0.0.1:8000/images/{{ $details['image'] }}" width="100"
                                         height="100" class="img-responsive" /></div>
                                 <div class="col-sm-9">
                                     <h4 class="nomargin">{{ $details['name'] }}</h4>

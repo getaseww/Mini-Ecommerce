@@ -45,6 +45,16 @@
                 </div>
             </div>
             <div class="col mb-3">
+                <label for="cat" class="col-md-4 col-form-label text-md-end">{{ __('Select Category') }}</label>
+                <div class="col-md-6">
+                    <select class="form-control" name="cat" id="category_id" required>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="col mb-3">
                 <label for="description"
                     class="col-md-4 col-form-label text-md-end">{{ __('Product Description') }}</label>
 
@@ -75,14 +85,6 @@
                 </div>
             </div>
 
-            {{-- <div class="col mb-3">
-                <label for="cat" class="col-md-4 col-form-label text-md-end">{{ __('Select Category') }}</label>
-                <select class="selectpicke" name="cat[]" id="category_id" multiple="miltiple" required>
-                    @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                    @endforeach
-                </select>
-            </div> --}}
             <div class="row mt-2">
                 <div class="col-md-4 offset-md-1">
                     <button type="submit" class="btn btn-primary">
@@ -95,9 +97,7 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-
-            $('select').selectpicker();
-
+            $('#multiple-checkboxes').multiselect();
         });
     </script>
 @endsection

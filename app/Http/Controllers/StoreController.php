@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Product;
+use Illuminate\Support\Facades\DB;
 class StoreController extends Controller
 {
     public function index(){
-        $users=User::with('roles')->paginate(9);
+        $users=User::where('role','CLIENT')->paginate(9);
         return view('stores',compact('users'));
     }
     public function findStore($id){
@@ -26,15 +28,28 @@ class StoreController extends Controller
         $user=User::find($user_id);        
         $categories=$user->categories()->where('visible',1)->get();
         $product=$user->products()->where('slug',$slug)->get();
+       // $category=$product->categories()->get();
         // $category=$product->categories()->first();
         return view('singleProduct',compact('user','categories','product'));
     }
 
-    public function listByCat($user_id,$cat_slug){
+    public function listByCat($user_id,$category_slug){
+        $user=User::findOrFail($user_id);        
+        $categories=$user->categories()->where('visible',1)->get();
+        $category=Category::where('slug',$category_slug)->get();
+        $products=Category::with('products')->where('slug',$category_slug)->get();
+        // $products=$allData['products'];
+        return view('catHomePage',compact('user','categories','products','category_slug'));
+    }
+
+
+    public function showFromCat($user_id,$category_slug,$slug){
         $user=User::find($user_id);        
         $categories=$user->categories()->where('visible',1)->get();
-        $products=$user->products()->where('slug',$cat_slug)->get();
-      //  $products=$cat->products()->get();
-        return view('homePage',compact('user','categories','products'));
+        $product=$user->products()->where('slug',$slug)->get();
+       // $category=$product->categories()->get();
+        // $category=$product->categories()->first();
+        return view('singleProduct',compact('user','categories','product'));
     }
+
 }

@@ -31,7 +31,7 @@
                     <div class="card-body">
                       <h5 class="clientDashTitle card-title">Pending Orders</h5>
                       <div class="clientDashButtonContainer">
-                        <a href="" class="clientDashButton btn btn-primary">{{20}}</a>
+                        <a href="/client/orders" class="clientDashButton btn btn-primary">{{$ordersCount}}</a>
                       </div>
                     </div>
                   </div>

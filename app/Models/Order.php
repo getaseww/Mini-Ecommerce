@@ -11,6 +11,11 @@ class Order extends Model
     protected $fillable = [
         'name', 'email', 'phone', 'address',
     ];
-
+    
+    public function products()
+    {
+        return $this
+            ->belongsToMany('App\Models\Product','order_products');
+    }
     
 }
